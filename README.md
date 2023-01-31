@@ -2,7 +2,7 @@
 
 Control your elgato keylight from Alfred
 
-<a href='#'>⤓ Download Here</a>
+<a href='https://github.com/brylok/elgato-keylight-workflow/releases/download/2023.1/Keylight.Control.alfredworkflow'>⤓ Download Here</a>
 
 ## Usage
 
