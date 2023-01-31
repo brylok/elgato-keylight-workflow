@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>0C00F300-AC5E-4C17-A59A-9FC09D93093B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>96DF7F82-0EA7-4B10-9B0A-9D38FA3402E3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>27EBF43B-9DC2-4EAB-8428-9B4D39DE102A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5B1F34E0-10C7-4E70-9128-8472A3C60355</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>360138DB-BD1B-4AFF-A22A-D63A50DC9B78</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>96DF7F82-0EA7-4B10-9B0A-9D38FA3402E3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>75A1D4D9-51E7-4B01-A900-525137411DA4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EA526606-4F68-4B30-B9BB-D4528105C555</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>96DF7F82-0EA7-4B10-9B0A-9D38FA3402E3</key>
+		<array/>
+		<key>C81794BB-7399-4451-B45B-F2E4A64BD2AA</key>
+		<array/>
+		<key>EA526606-4F68-4B30-B9BB-D4528105C555</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C81794BB-7399-4451-B45B-F2E4A64BD2AA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Bryan Lokey</string>
+	<key>description</key>
+	<string>Control your elgato keylight with Alfred</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Keylight Control</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"Cool","arg":"{\"lights\":[{\"on\":1,\"temperature\":180}]}","subtitle":"Keylight color to cool"},{"title":"Dim","arg":"{\"lights\":[{\"on\":1,\"brightness\":{var:userConfigDimSetting}}]}","subtitle":"Keylight to low brightness"},{"title":"Fave","arg":"{\"lights\":[{\"on\":1,\"brightness\":{var:userConfigFavoriteLightBrightness},\"temperature\":{var:userConfigFavoriteLightTemp}}]}","subtitle":"Keylight favorite setting"},{"title":"Full","arg":"{\"lights\":[{\"on\":1,\"brightness\":100}]}","subtitle":"Keylight to full brightness"},{"title":"Half","arg":"{\"lights\":[{\"on\":1,\"brightness\":50}]}","subtitle":"Keylight to half brightness"},{"title":"On","arg":"{\"lights\":[{\"on\":1}]}","subtitle":"Turn on keylight"},{"title":"Off","arg":"{\"lights\":[{\"on\":0}]}","subtitle":"Turn off keylight"},{"title":"Warm","arg":"{\"lights\":[{\"on\":1,\"temperature\":335}]}","subtitle":"Keylight color to warm"}]</string>
+				<key>keyword</key>
+				<string>key</string>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Control your elgato keylight</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>27EBF43B-9DC2-4EAB-8428-9B4D39DE102A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>100</integer>
+				<key>script</key>
+				<string># keylight control
+
+# setup data
+lightAddress="http://${userConfigIPAddress}:9123/elgato/lights"
+headerContent='Content-Type: application/json'
+dataContent={query}
+
+
+# update data
+curl --location --request PUT $lightAddress \
+--header $headerContent \
+--data-raw $dataContent</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>5B1F34E0-10C7-4E70-9128-8472A3C60355</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>kk</string>
+				<key>subtext</key>
+				<string>Toggle your keylight off and on</string>
+				<key>text</key>
+				<string>Toggle</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>360138DB-BD1B-4AFF-A22A-D63A50DC9B78</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>100</integer>
+				<key>script</key>
+				<string># keylight toggle
+
+# setup data
+lightAddress="http://${userConfigIPAddress}:9123/elgato/lights"
+headerContent='Content-Type: application/json'
+dataContentOn='{"lights":[{"on":1}]}'
+dataContentOff='{"lights":[{"on":0}]}'
+
+
+# get status
+currentState=$(curl --location --request GET $lightAddress --header $headerContent  | jq -r '.lights[0].on') 
+
+
+if [[ "${currentState}" = "0" ]]
+then
+    curl --location --request PUT $lightAddress --header $headerContent --data-raw $dataContentOn
+else
+    curl --location --request PUT $lightAddress --header $headerContent --data-raw $dataContentOff
+fi
+
+
+
+# ------------------
+# WIP Improvements
+# ------------------
+# set new state
+# newState=$((( ($currentState - 1) * -1)));
+# dataContent='{"lights":[{"on":$newState}]}' 
+
+
+# toggle light
+# curl --location --request PUT $lightAddress --header $headerContent --data-raw $dataContent</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>96DF7F82-0EA7-4B10-9B0A-9D38FA3402E3</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>121</integer>
+				<key>hotmod</key>
+				<integer>10223616</integer>
+				<key>hotstring</key>
+				<string>⇟</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>0C00F300-AC5E-4C17-A59A-9FC09D93093B</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>soundname</key>
+				<string>Glass</string>
+				<key>systemsound</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.playsound</string>
+			<key>uid</key>
+			<string>C81794BB-7399-4451-B45B-F2E4A64BD2AA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ki</string>
+				<key>subtext</key>
+				<string>Identify your keylight</string>
+				<key>text</key>
+				<string>Identify</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>75A1D4D9-51E7-4B01-A900-525137411DA4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>100</integer>
+				<key>script</key>
+				<string># keylight identify
+
+# setup data
+lightAddress="http://${userConfigIPAddress}:9123/elgato/identify"
+headerContent='Accept: application/json'
+
+
+# trigger identify function
+curl --location --request POST $lightAddress --header $headerContent</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>EA526606-4F68-4B30-B9BB-D4528105C555</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>There are several user configurations that can be setup.  Only one is required and that is the IP address of the key light.</string>
+	<key>uidata</key>
+	<dict>
+		<key>0C00F300-AC5E-4C17-A59A-9FC09D93093B</key>
+		<dict>
+			<key>xpos</key>
+			<real>430</real>
+			<key>ypos</key>
+			<real>640</real>
+		</dict>
+		<key>27EBF43B-9DC2-4EAB-8428-9B4D39DE102A</key>
+		<dict>
+			<key>xpos</key>
+			<real>435</real>
+			<key>ypos</key>
+			<real>345</real>
+		</dict>
+		<key>360138DB-BD1B-4AFF-A22A-D63A50DC9B78</key>
+		<dict>
+			<key>xpos</key>
+			<real>430</real>
+			<key>ypos</key>
+			<real>505</real>
+		</dict>
+		<key>5B1F34E0-10C7-4E70-9128-8472A3C60355</key>
+		<dict>
+			<key>xpos</key>
+			<real>655</real>
+			<key>ypos</key>
+			<real>345</real>
+		</dict>
+		<key>75A1D4D9-51E7-4B01-A900-525137411DA4</key>
+		<dict>
+			<key>xpos</key>
+			<real>425</real>
+			<key>ypos</key>
+			<real>825</real>
+		</dict>
+		<key>96DF7F82-0EA7-4B10-9B0A-9D38FA3402E3</key>
+		<dict>
+			<key>xpos</key>
+			<real>665</real>
+			<key>ypos</key>
+			<real>575</real>
+		</dict>
+		<key>C81794BB-7399-4451-B45B-F2E4A64BD2AA</key>
+		<dict>
+			<key>xpos</key>
+			<real>870</real>
+			<key>ypos</key>
+			<real>825</real>
+		</dict>
+		<key>EA526606-4F68-4B30-B9BB-D4528105C555</key>
+		<dict>
+			<key>xpos</key>
+			<real>650</real>
+			<key>ypos</key>
+			<real>825</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>0.0.0.0</string>
+				<key>placeholder</key>
+				<string>ip-address-goes-here</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>The ip address of the key light</string>
+			<key>label</key>
+			<string>Keylight IP Address</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>userConfigIPAddress</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>180</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Cool</string>
+						<string>180</string>
+					</array>
+					<array>
+						<string>Warm</string>
+						<string>335</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>What is your prefered light temp.  This will be used in your fave setting.</string>
+			<key>label</key>
+			<string>Favorite Preset Temp</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>userConfigFavoriteLightTemp</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>20</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>10%</string>
+						<string>10</string>
+					</array>
+					<array>
+						<string>20%</string>
+						<string>20</string>
+					</array>
+					<array>
+						<string>30%</string>
+						<string>30</string>
+					</array>
+					<array>
+						<string>40%</string>
+						<string>40</string>
+					</array>
+					<array>
+						<string>50%</string>
+						<string>50</string>
+					</array>
+					<array>
+						<string>60%</string>
+						<string>60</string>
+					</array>
+					<array>
+						<string>70%</string>
+						<string>70</string>
+					</array>
+					<array>
+						<string>80%</string>
+						<string>80</string>
+					</array>
+					<array>
+						<string>90%</string>
+						<string>90</string>
+					</array>
+					<array>
+						<string>100%</string>
+						<string>100</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>What is your prefered light brightness.  This will be used in your fave setting.</string>
+			<key>label</key>
+			<string>Favorite Preset Brightness</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>userConfigFavoriteLightBrightness</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>5</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>1%</string>
+						<string>1</string>
+					</array>
+					<array>
+						<string>5%</string>
+						<string>5</string>
+					</array>
+					<array>
+						<string>10%</string>
+						<string>10</string>
+					</array>
+					<array>
+						<string>15%</string>
+						<string>15</string>
+					</array>
+					<array>
+						<string>20%</string>
+						<string>20</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Set the level of brightness for the dim setting</string>
+			<key>label</key>
+			<string>Dim Level</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>userConfigDimSetting</string>
+		</dict>
+	</array>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string>https://bryanlokey.com</string>
+</dict>
+</plist>
