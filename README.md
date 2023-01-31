@@ -31,8 +31,6 @@ Example, from the root of this repo:
 
 `sh ./example-scripts/identifyLight.sh`
 
-![Example configuration](Workflow/images/configuration.png)
-
 
 
 ## Thanks
