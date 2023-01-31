@@ -22,6 +22,18 @@ Many settings are available through the built-in workflow configuration tool. Yo
 ![Example configuration](Workflow/images/configuration.png)
 
 
+## Example Scripts
+
+I added a few example scripts in the example script folder.  These can be run in from the terminal as you would run any other program.  These will not work unless you update the IP address in the script to match the IP address of your key light. 
+
+
+Example, from the root of this repo: 
+
+`sh ./example-scripts/identifyLight.sh`
+
+![Example configuration](Workflow/images/configuration.png)
+
+
 
 ## Thanks
 
