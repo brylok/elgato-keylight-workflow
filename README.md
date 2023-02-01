@@ -4,6 +4,14 @@ Control your elgato keylight from Alfred
 
 <a href='https://github.com/brylok/elgato-keylight-workflow/releases/download/2023.1/Keylight.Control.alfredworkflow'>⤓ Download Here</a>
 
+## Dependencies
+
+You must install <a href="https://github.com/stedolan/jq">jq</a> to use this workflow.  I find the easiest way is to use <a href="https://brew.sh/">homebrew</a>.  
+
+`brew install jq`
+
+
+
 ## Usage
 
 Update the status of your key light by using the keylight control keyword (default: `key`) and then press space to see a list of options.
