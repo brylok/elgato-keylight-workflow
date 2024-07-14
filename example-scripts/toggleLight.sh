@@ -7,7 +7,7 @@
 ipAddressOfKeylight='192.168.188.95' # <--- 👀 Update this
 
 # additional setup data
-lightAddress="http://$ipAddressOfKeylight:9123/elgato/lights"
+constructedLightAddress="http://$ipAddressOfKeylight:9123/elgato/lights"
 headerContent='Content-Type: application/json'
 dataContentOn='{"lights":[{"on":1}]}'
 dataContentOff='{"lights":[{"on":0}]}'
